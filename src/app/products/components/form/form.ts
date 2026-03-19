@@ -19,9 +19,13 @@ export class FormComponent {
 
   @Output() newProductSubmit = new EventEmitter<Product>();
 
-  onSubmit() {
+  onSubmit(): void {
     this.newProductSubmit.emit(this.product);
     console.log(this.product);
+  }
+
+  onNewProduct(): void {
+    this.product = new Product();
   }
 
 }

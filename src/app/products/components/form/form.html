@@ -10,5 +10,6 @@
         <input type="number" class="form-control my-2" placeholder="Price" id="price" name="price" [(ngModel)]="product.price">
     </div>
     <button type="submit" class="btn btn-primary my-2">{{product.id > 0 ? 'Actualizar' : 'Crear'}}</button>
+    <button type="button" class="btn btn-success my-2 mx-2" (click)="onNewProduct()">Nuevo</button>
 
 </form>
