@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit{
     this.service.findAll().subscribe(products => this.products = products);
   }
 
-  addProduct(product: Product) {
+  addProduct(product: Product): void {
     if (product.id > 0) {
       this.products = this.products.map(p =>{
         if (p.id == product.id) {
@@ -34,12 +34,18 @@ export class ProductComponent implements OnInit{
       product.id = this.products.length + 1;
       this.products.push(product);
     }
+    this.productSelected = new Product();
     console.log(product);
   }
 
-  onUpdateProduct(productRow: Product) {
+  onUpdateProduct(productRow: Product): void {
     this.productSelected = productRow;
     console.log(productRow);
+  }
+
+  onRemoveProduct(id: number): void {
+    this.products = this.products.filter(p => p.id !== id);
+    console.log(id);
   }
 
 }
