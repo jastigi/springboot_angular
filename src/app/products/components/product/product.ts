@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product';
-import { ProductService } from '../services/product';
+import { Product } from '../../models/product';
+import { ProductService } from '../../services/product';
+import { FormComponent } from "../form/form";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [FormComponent],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
 export class ProductComponent implements OnInit{
+
   products: Product[] = [];
 
   constructor(private service: ProductService){ }
@@ -17,4 +19,11 @@ export class ProductComponent implements OnInit{
   ngOnInit(): void {
     this.service.findAll().subscribe(products => this.products = products);
   }
+
+  addProduct(product: Product) {
+    product.id = this.products.length + 1;
+    this.products.push(product);
+    console.log(product);
+  }
+
 }

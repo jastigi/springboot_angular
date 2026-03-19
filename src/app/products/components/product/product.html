@@ -1,5 +1,7 @@
 <h2>Listado de Productos</h2>
 
+<product-form (newProductSubmit)="addProduct($event)"></product-form>
+
 @if(products.length > 0){
     
     <table>
