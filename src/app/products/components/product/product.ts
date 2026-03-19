@@ -23,8 +23,17 @@ export class ProductComponent implements OnInit{
   }
 
   addProduct(product: Product) {
-    product.id = this.products.length + 1;
-    this.products.push(product);
+    if (product.id > 0) {
+      this.products = this.products.map(p =>{
+        if (p.id == product.id) {
+          return {...product};
+        }
+        return p;
+      });
+    } else {
+      product.id = this.products.length + 1;
+      this.products.push(product);
+    }
     console.log(product);
   }
 

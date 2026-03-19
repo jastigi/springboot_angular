@@ -12,6 +12,6 @@
         <label for="price">Price</label>
         <input type="number" id="price" name="price" [(ngModel)]="product.price">
     </div>
-    <button type="submit">Crear</button>
+    <button type="submit">{{product.id > 0 ? 'Actualizar' : 'Crear'}}</button>
 
 </form>
