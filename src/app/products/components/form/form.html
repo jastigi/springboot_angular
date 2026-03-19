@@ -11,10 +11,10 @@
         required
         minlength="5">
         <div *ngIf="name.invalid && (name.dirty || name.touched)">
-            <div *ngIf="name.errors?.['required']" class="alert alert-danger">
+            <div *ngIf="name.errors?.['required']" class="text-danger">
                 El nombre es requerido
             </div>
-            <div *ngIf="name.errors?.['minlength']" class="alert alert-danger">
+            <div *ngIf="name.errors?.['minlength']" class="text-danger">
                 El nombre debe tener al menos 5 caracteres
             </div>
         </div>
@@ -30,10 +30,10 @@
         required
         minlength="10">
         <div *ngIf="description.invalid && (description.dirty || description.touched)">
-            <div *ngIf="description.errors?.['required']"    class="alert alert-danger">
+            <div *ngIf="description.errors?.['required']"    class="text-danger">
                 La descripción es requerida
             </div>
-            <div *ngIf="description.errors?.['minlength']" class="alert alert-danger">
+            <div *ngIf="description.errors?.['minlength']" class="text-danger">
                 La descripción debe tener al menos 10 caracteres
             </div>
         </div>

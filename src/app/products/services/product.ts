@@ -49,15 +49,30 @@ export class ProductService {
   }
 
   create(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.url, product);
+    return this.http.post<Product>(this.url, product).pipe(
+      catchError(error => {
+        console.error('Error creating product:', error);
+        return of(new Product());
+      })
+    );
   }
 
   update(product: Product): Observable<Product> {
-    return this.http.put<Product>(this.url + '/' + product.id, product);
+    return this.http.put<Product>(this.url + '/' + product.id, product).pipe(
+      catchError(error => {
+        console.error('Error updating product:', error);
+        return of(new Product());
+      })
+    );
   }
 
-  delete(product: Product): Observable<Product> {
-    return this.http.delete<Product>(this.url + '/' + product.id);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(this.url + '/' + id).pipe(
+      catchError(error => {
+        console.error('Error deleting product:', error);
+        return of();
+      })
+    );
   }
 
 }

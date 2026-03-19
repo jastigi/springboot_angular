@@ -55,8 +55,11 @@ export class ProductComponent implements OnInit{
   }
 
   onRemoveProduct(id: number): void {
-    this.products = this.products.filter(p => p.id !== id);
-    console.log(id);
+    this.service.delete(id).subscribe(() => {
+      this.products = this.products.filter(p => p.id !== id);
+      console.log('Producto eliminado:', id);
+      this.cdr.detectChanges();
+    });
   }
 
 }
