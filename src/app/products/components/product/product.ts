@@ -14,6 +14,8 @@ export class ProductComponent implements OnInit{
 
   products: Product[] = [];
 
+  productSelected: Product = new Product();
+
   constructor(private service: ProductService){ }
 
   ngOnInit(): void {
@@ -24,6 +26,11 @@ export class ProductComponent implements OnInit{
     product.id = this.products.length + 1;
     this.products.push(product);
     console.log(product);
+  }
+
+  onUpdateProduct(productRow: Product) {
+    this.productSelected = productRow;
+    console.log(productRow);
   }
 
 }

@@ -1,6 +1,6 @@
 <h2>Listado de Productos</h2>
 
-<product-form (newProductSubmit)="addProduct($event)"></product-form>
+<product-form (newProductSubmit)="addProduct($event)" [product]="productSelected"></product-form>
 
 @if(products.length > 0){
     
@@ -11,6 +11,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,9 @@
                     <td>{{product.name}}</td>
                     <td>{{product.description}}</td>
                     <td>{{product.price}}</td>
+                    <td>
+                        <button type="button" (click)="onUpdateProduct(product)">Actualizar</button>
+                    </td>
                 </tr>
             }
         </tbody>
